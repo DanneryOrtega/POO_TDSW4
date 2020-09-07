@@ -1,0 +1,61 @@
+personas = []
+opcion = 1
+cont = 0
+
+while opcion != 5:
+    print("****")
+    print("**BIENVENIDO**")
+    print("****")
+    print("*  Eliga una opcion:               *")
+    print("*  1. Agregar nuevo usuario        *")
+    print("*  2. Editar un usuario            *")
+    print("*  3. Eliminar un usuario          *")
+    print("*  4. Listar todos los usuarios    *")
+    print("*  5. Salir del programa           *")
+    print("****")
+    opcion = int(input("Eliga: "))
+
+    if(opcion == 1):
+        #Agregar una persona
+        nombres = input("Ingresa el nombre: ")
+        apellidos = input("Ingresa el apellido: ")
+        celular = input("Ingrese el # de celular: ")
+        personas.append(
+            {
+            'nombres': nombres,
+            'apellidos': apellidos,
+            'celular': celular
+            }
+        )
+        print("El Usuario",nombres,"se ha agregado Correctamente")
+        Enter = input("Presione Enter para continuar...")
+    elif(opcion == 2):
+        #Editar una persona
+        selec=int(input("Seleccionar persona: "))
+        print("Usuario: ", personas[selec])
+        selec2=input("¿Que Registro Desea Modificar ? [nombres|apellidos|celular]     ")
+        correccion=input("Nuevos datos:    ")
+        personas[selec][selec2] = correccion
+        print("Se modificaron los datos ", personas[selec])
+    elif(opcion == 3):
+        #Eliminar una persona
+        eliminar=int(input("Seleccione datos a eliminar"))
+        busqueda=personas[eliminar]
+        if busqueda in personas:
+            del personas[eliminar]
+            print("La persona en la posicion", eliminar, "se elimino correctamente.")
+        else:
+            print("La persona no se encuentra registrada.")
+    elif(opcion == 4):
+        #Mostrar lista
+        if(len(personas)==0):
+            print("Lista vacia")
+        else:
+            print("|ID|","|NOMBRE|","|APELLIDOS|","|CELULAR|")
+            print("|",cont+1," |","|",nombres,"|","|",apellidos,"|","|",celular,"|")
+            for i in personas:
+                print(i)
+
+        pass
+    
+print("Muchas Gracias por usar el programa")
